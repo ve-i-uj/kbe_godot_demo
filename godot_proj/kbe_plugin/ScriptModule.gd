@@ -17,13 +17,13 @@ var idmethods = {}
 var idbase_methods = {}
 var idcell_methods = {}
 
-var script = null;
+var script_cls = null;
 
 func _init(modulename):
 	name = modulename
 	
 	if KBEngine.Helpers.kbe_scripts_dict.has(name):
-		script = KBEngine.Helpers.kbe_scripts_dict[name]
+		script_cls = KBEngine.Helpers.kbe_scripts_dict[name]
 		
-	if script == null:
-		KBEngine.Dbg.ERROR_MSG("can't load script: %s!" % name)
+	if script_cls == null:
+		KBEngine.Dbg.ERROR_MSG("can't load script_cls: %s!" % name)

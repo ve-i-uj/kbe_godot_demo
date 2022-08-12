@@ -49,7 +49,7 @@ class BASE:
 		var type = typeof(v)
 		return (type == TYPE_INT) or (type == TYPE_REAL) or (type == TYPE_BOOL)
 	
-	static func bind():
+	func bind():
 		pass
 	func createFromStream(stream):
 		return null

@@ -676,7 +676,7 @@ func onImportClientEntityDef(stream):
 		EntityDef.moduledefs[scriptmodule_name] = module
 		EntityDef.idmoduledefs[scriptUtype] = module
 		
-		var Class = module.script
+		var Class = module.script_cls
 		
 		while propertysize > 0:
 			propertysize -= 1
@@ -786,11 +786,11 @@ func onImportClientEntityDef(stream):
 			module.cell_methods[name] = savedata
 			module.idcell_methods[methodUtype] = savedata
 		
-		if module.script == null:
+		if module.script_cls == null:
 			Dbg.ERROR_MSG("KBEngine::Client_onImportClientEntityDef: module(" + scriptmodule_name + ") not found!")
 		
 		for name in module.methods.keys():
-			if module.script != null and not KBEngine.Helpers.methodExistsInClass(module.script, name):
+			if module.script_cls != null and not KBEngine.Helpers.methodExistsInClass(module.script_cls, name):
 				Dbg.WARNING_MSG(scriptmodule_name + ":: method(" + name + ") not implemented!")
 
 	onImportEntityDefCompleted()
@@ -1046,7 +1046,7 @@ func Client_onCreatedProxies(rndUUID, eid, entityType):
 			Dbg.ERROR_MSG("KBEngine::Client_onCreatedProxies: module not found(" + str(entityType) + ")!")
 			return
 		
-		var runclass = module.script
+		var runclass = module.script_cls
 		if runclass == null:
 			return
 		
@@ -1228,7 +1228,7 @@ func Client_onEntityEnterWorld(stream):
 			return
 		var module = EntityDef.moduledefs[entityType]
 		
-		var runclass = module.script
+		var runclass = module.script_cls
 		if runclass == null:
 			return
 		
